@@ -1,1 +1,16 @@
 @import "tailwindcss";
+
+@layer components {
+  .form-input {
+    @apply w-full rounded-2xl border-2 px-3 py-2 outline-none focus:border-4;
+  }
+  .form-input-label {
+    @apply text-lg font-bold;
+  }
+  .form-error-text {
+    @apply text-center font-medium text-red-500;
+  }
+  .form-submit-btn {
+    @apply rounded-2xl bg-black px-3 py-2 text-lg font-bold text-white disabled:bg-black/80;
+  }
+}
