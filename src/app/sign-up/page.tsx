@@ -3,12 +3,15 @@
 import signUp from "@/actions/sign-up";
 import { formStateType } from "@/types/sign-up";
 import Link from "next/link";
-import { useFormState } from "react-dom";
+import { useActionState } from "react";
 
 const SignUp = () => {
   const initialFormState: formStateType = {};
 
-  const [formState, action, isPending] = useFormState(signUp, initialFormState);
+  const [formState, action, isPending] = useActionState(
+    signUp,
+    initialFormState,
+  );
 
   return (
     <main className="flex h-screen w-screen items-center justify-center">
