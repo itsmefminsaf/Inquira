@@ -36,7 +36,7 @@ const signUp = async (
 
     const { hash, salt } = await hashPassword(password);
 
-    await Users?.insertOne({ email, password: { hash, salt } });
+    await Users?.insertOne({ name, email, password: { hash, salt } });
 
     await createSession(email);
   } catch (error) {
