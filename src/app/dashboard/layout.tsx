@@ -1,12 +1,18 @@
+import getUserName from "@/utils/getUserName";
 import type { Metadata } from "next";
+import { redirect } from "next/navigation";
 
 export const metadata: Metadata = {
   title: "Dashboard | Inquira",
 };
 
-const DashboardLayout = ({
+const DashboardLayout = async ({
   children,
 }: Readonly<{ children: React.ReactNode }>) => {
+  const username = await getUserName();
+
+  if (!username) return redirect("/login");
+
   return (
     <main>
       <header className="flex items-center justify-between bg-black p-5 text-white">
@@ -15,7 +21,7 @@ const DashboardLayout = ({
           <hr className="h-10 w-0.5 rotate-12 bg-white" />
           <h3 className="text-2xl font-bold">Dashboard</h3>
           <hr className="h-10 w-0.5 rotate-12 bg-white" />
-          <h3 className="text-2xl font-bold">User name</h3>
+          <h3 className="text-2xl font-bold">{username}</h3>
         </div>
         <nav className="flex gap-3">
           <li className="list-none underline-offset-8 hover:font-bold hover:underline">
