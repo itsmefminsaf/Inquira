@@ -1,5 +1,6 @@
 import getUserName from "@/utils/getUserName";
 import type { Metadata } from "next";
+import Link from "next/link";
 import { redirect } from "next/navigation";
 
 export const metadata: Metadata = {
@@ -14,7 +15,7 @@ const DashboardLayout = async ({
   if (!username) return redirect("/login");
 
   return (
-    <main>
+    <main className="grid h-screen w-screen grid-rows-[auto_1fr]">
       <header className="flex items-center justify-between bg-black p-5 text-white">
         <div className="flex items-center gap-5">
           <h1 className="text-5xl font-extrabold">Inquira</h1>
@@ -34,6 +35,14 @@ const DashboardLayout = async ({
             <a href="/dashboard/settings">Settings</a>
           </li>
         </nav>
+        <div className="flex justify-end">
+          <Link
+            href={"/dashboard/forms/new"}
+            className="rounded-full bg-white px-3 py-2 text-2xl font-bold text-black duration-300 hover:scale-105"
+          >
+            New Form
+          </Link>
+        </div>
       </header>
       {children}
     </main>
